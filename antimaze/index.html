@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Antimaze</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="icon" href="icon.png">
+</head>
+<body>
+	<h1 id="title">Antimaze</h1>
+	<canvas id="gc"></canvas>
+	<div id="dimenDiv">
+		<p>Width</p>
+		<input type="number" min="3" max="20" name="width" value="8" id="widthInput" />
+		<p>Height</p>
+		<input type="number" min="3" max="20" name="height" value="8" id="heightInput" />
+	</div>
+	<button id="generateButton" type="button" onclick="generate_click()">Generate</button>
+	<h2>Overview</h2>
+	<p>Welcome to Antimaze! This is a deduction based maze game where you identify the solution by excluding the dead ends. Simply click any tile with three surrounding walls to make it disappear. Repeat this process until only the solution remains.</p>
+	<h2>Timing</h2>
+	<p>The timer begins as soon as you correctly click the first dead end and ends the moment you click the last one. Each misclick (clicking a tile with fewer than three surrounding walls) results in a one second penalty. Clicking a tile that was previously excluded has no effect.</p>
+	<h2>Technical</h2>
+	<p>While you can use this method to solve mazes outside of this game, there are a few points you should be aware of. All of the mazes in this game are saturated, meaning that you cannot add another line without creating unreachable squares. This makes the mazes more interesting, but more importantly it prevents loops from being possible (which would stop this solving method from working).</p>
+	<p>You might also notice that the solutions are a random variation of the shortest possible solution. There are two important reasons for this. The simpler the solution, the more clicks required to reveal it. For example, a very complicated solution could result in very few dead ends. The solution for an N by M maze is always N + M - 1 tiles long (optimal).</p>
+	<p>As a result of this, any maze with a given set of dimensions is equally fair. You and your friend could compare times of a specific size and wouldn't need to consider any luck factor. More specifically, any N by M maze requires exactly N * M - N - M + 1 clicks to solve.</p>
+	<h2>Sharing</h2>
+	<p>I hope you are having as much fun playing the game as I had creating it. Feel free to share both the github link and the Google Play Store link to see how your friends compare. I am an Android Developer by trade, so that app is naturally much better than this bare-bones web version. I apologize for not having an iOS app.</p>
+	<p><a href="https://github.com/ImportMathRepositories/Antimaze">Web Version Github</a></p>
+	<p><a href="https://play.google.com/store/apps/details?id=com.sarnelli.dan.antimaze">Android App (Google Play Store)</a></p>
+	<script type="text/javascript" src="global.js"></script>
+	<script type="text/javascript" src="maze_generator.js"></script>
+	<script type="text/javascript" src="paint_util.js"></script>
+	<script type="text/javascript" src="maze_util.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>

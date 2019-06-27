@@ -1,0 +1,28 @@
+#title {
+	margin: auto;
+	display: block;
+	text-align: center;
+	padding: 20px;
+}
+
+#gc {
+	margin: auto;
+	display: block;
+}
+
+#dimenDiv {
+	margin: auto;
+	display: block;
+	text-align: center;
+}
+
+#widthInput, #heightInput {
+	text-align: center;
+}
+
+#generateButton {
+	margin: auto;
+	display: block;
+	text-align: center;
+	margin-top: 20px;
+}
