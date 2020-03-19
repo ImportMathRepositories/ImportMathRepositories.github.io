@@ -1,0 +1,17 @@
+* {
+    font-family: "Arial", Helvetica, sans-serif;
+    color: rgb(80, 80, 80);
+}
+
+body {
+    background-color: #EDE6E3;
+}
+
+.chartContainer {
+    width: 400px;
+}
+
+#tripleContainer {
+    display: flex;
+    justify-content: space-around;
+}
