@@ -22,10 +22,13 @@ fetch(dataUrl)
             currentRow = line.split(',');
             if (currentRow[1] === 'US') {
                 for (var i = dataOffset; i < currentRow.length; i++) {
-                    if (dailyCases.length < currentRow.length - dataOffset) {
-                        dailyCases.push(parseInt(currentRow[i]));
-                    } else {
-                        dailyCases[i - dataOffset] += parseInt(currentRow[i]);
+                    var casesInt = parseInt(currentRow[i]);
+                    if (Number.isInteger(casesInt)) {
+                        if (dailyCases.length < currentRow.length - dataOffset) {
+                            dailyCases.push(casesInt);
+                        } else {
+                            dailyCases[i - dataOffset] += casesInt;
+                        }
                     }
                 }
             }
