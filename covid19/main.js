@@ -16,6 +16,7 @@ fetch(dataUrl)
         var lines = text.split('\n');
         var dates = lines[0].split(",").slice(dataOffset);
         var dailyCases = [];
+        var firstRow = true;
         var currentRow;
 
         lines.forEach((line, index) => {
@@ -24,13 +25,14 @@ fetch(dataUrl)
                 for (var i = dataOffset; i < currentRow.length; i++) {
                     var casesInt = parseInt(currentRow[i]);
                     if (Number.isInteger(casesInt)) {
-                        if (dailyCases.length < currentRow.length - dataOffset) {
+                        if (firstRow) {
                             dailyCases.push(casesInt);
                         } else {
                             dailyCases[i - dataOffset] += casesInt;
                         }
                     }
                 }
+                firstRow = false;
             }
         });
 
@@ -59,6 +61,10 @@ fetch(dataUrl)
         } else {
             accelerationStateLabel.innerHTML = "Likely Decelerative";
             accelerationStateLabel.style.color = "#606C38";
+        }
+
+        while (dates.length > dailyCases.length) {
+            dates.pop();
         }
 
         var dailyChart = new Chart(dailyContext, {
