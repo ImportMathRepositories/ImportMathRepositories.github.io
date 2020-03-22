@@ -6,10 +6,18 @@
 body {
     background-color: #EDE6E3;
     min-width: 1200px;
+    margin: 0 !important;
 }
 
 .chartContainer {
     width: 400px;
+}
+
+#dataBanner {
+    background-color: #C41E3D;
+    margin-top: 0;
+    padding: 10px;
+    color: white;
 }
 
 #tripleContainer {
