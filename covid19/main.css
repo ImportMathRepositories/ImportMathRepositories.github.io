@@ -13,13 +13,6 @@ body {
     width: 400px;
 }
 
-#dataBanner {
-    background-color: #C41E3D;
-    margin-top: 0;
-    padding: 10px;
-    color: white;
-}
-
 #tripleContainer {
     display: flex;
     justify-content: space-around;

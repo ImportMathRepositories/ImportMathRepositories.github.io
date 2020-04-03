@@ -46,6 +46,18 @@ fetch(dataUrl)
             growth.push(newCases[i + 1] - newCases[i]);
         }
 
+        var growthAverage = [];
+        for (var i = 0; i < growth.length; i++) {
+            var currentTotal = 0;
+            for (var o = 0; o < 7; o++) {
+                var currentOffset = i - o;
+                if (currentOffset >= 0) {
+                    currentTotal += growth[currentOffset];
+                }
+            }
+            growthAverage.push(parseInt(currentTotal / 7));
+        }
+
         confirmedLabel.innerHTML = dailyCases[dailyCases.length - 1] + " Total Confirmed Cases";
         newCasesLabel.innerHTML = newCases[newCases.length - 1] + " New Cases Today";
 
@@ -69,7 +81,6 @@ fetch(dataUrl)
 
         var dailyChart = new Chart(dailyContext, {
             type: 'line',
-
             data: {
                 labels: dates,
                 datasets: [{
@@ -97,9 +108,13 @@ fetch(dataUrl)
             data: {
                 labels: dates,
                 datasets: [{
-                    label: "Growth Rate",
-                    data: growth,
+                    label: "Growth Rate Moving Average",
+                    data: growthAverage,
                     backgroundColor: "#D84727"
+                }, {
+                    label: "Daily Growth Rate",
+                    data: growth,
+                    fill: false
                 }]
             }
         });
